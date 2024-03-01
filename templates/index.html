@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>URL Shortener</title>
+</head>
+<body>
+    <h1>Bienvenue, {{.Username}}</h1>
+    <h1>Raccourcisseur d'URL</h1>
+    <form id="urlForm">
+        <input type="text" id="longUrl" placeholder="Entrez votre URL ici" required>
+        <!-- Nouveau champ pour l'alias -->
+        <input type="text" id="alias" placeholder="Alias (optionnel)">
+        <button type="submit">Raccourcir</button>
+    </form>
+    <p id="shortUrl"></p>
+    <script>
+       document.getElementById('urlForm').onsubmit = async function(e) {
+    e.preventDefault();
+    const longUrl = document.getElementById('longUrl').value;
+    const alias = document.getElementById('alias').value; // Récupérer la valeur de l'alias
+    const requestBody = { long_url: longUrl };
+    
+    if (alias.trim() !== '') {
+        requestBody.alias = alias;
+    }
+
+    const response = await fetch('/shorten', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+    });
+    const data = await response.json();
+
+    if (data.short_url) {
+    // Supposons que `data.alias` contienne l'alias si spécifié, sinon `data.short_url` est utilisé
+    const displayUrl = data.Alias ? `http://localhost:8080/${data.Alias}` : `http://localhost:8080/${data.short_url}`;
+
+    document.getElementById('shortUrl').innerHTML = `URL raccourcie : <a href="${displayUrl}" target="_blank">${displayUrl}</a>`;
+}
+};
+    </script>
+</body>
+</html>
