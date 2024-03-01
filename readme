@@ -1,0 +1,27 @@
+# GO Project
+
+
+
+## Installation
+
+Install on MacOS : Follow Installer instructions
+sur mac utiliser : brew install go
+sur windows force a vous 
+
+
+    
+## Run
+
+To run this project
+```bash
+  Go run main.go
+```
+
+
+## Features
+
+- Login
+- Register
+- Création de shortURL
+- Création de shortURL avec et un alias  
+
