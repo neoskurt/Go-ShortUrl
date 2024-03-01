@@ -9,7 +9,6 @@ import (
     "encoding/json"
     "testing"
     "github.com/gin-gonic/gin"
-	"go-url-shortener/controllers"
     "go-url-shortener/routes"
 	"go-url-shortener/models"
 )

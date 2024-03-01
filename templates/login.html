@@ -32,14 +32,11 @@
                 });
 
                 const data = await response.json();
-                console.log('anis', response)
 
                 if (response.ok) {
                     alert('Connexion réussie');
                     window.location.href = '/';
                 } else {
-                console.log('anis', response)
-
                     throw new Error(data.message || 'Erreur lors de la connexion');
                 }
             } catch (error) {
