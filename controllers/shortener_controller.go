@@ -9,12 +9,10 @@ import (
 
 
 func CreateShortURL(c *gin.Context) {
+
     var url models.URL
-
     c.BindJSON(&url)
-
     url.GenerateShortURL()
-
     models.CreateURL(&url)
 
     c.JSON(200, gin.H{"short_url": url.ShortURL, "Alias": url.Alias})

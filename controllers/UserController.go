@@ -26,9 +26,6 @@ func RegisterUser(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": result.Error.Error()})
 		return
 	}
-
-
-	
 	c.JSON(http.StatusOK, gin.H{"message": "Registration successful", "redirectURL": "/login"})
 }
 
@@ -40,16 +37,15 @@ func LoginUser(c *gin.Context) {
 	}
 
 	var user models.User
-
 	result := models.DB.Where("email = ?", credentials.Email).First(&user)
-
 	if result.Error != nil {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid credentials"})
 		return
 	}
-
+	
 	if err := bcrypt.CompareHashAndPassword([]byte(user.PasswordHash), []byte(credentials.Password)); err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid credentials"})
+
+		c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid credentials" +" " +user.PasswordHash})
 		return
 	}
 

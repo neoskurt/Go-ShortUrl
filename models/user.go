@@ -2,6 +2,7 @@ package models
 
 import (
     "github.com/jinzhu/gorm"
+    _ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 // User représente le modèle de l'utilisateur dans la base de données
@@ -17,4 +18,3 @@ type LoginCredentials struct {
     Password string `json:"password"`
 	Email    string `json:"email"`
 }
-

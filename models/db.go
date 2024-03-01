@@ -27,6 +27,6 @@ func InitDB() {
 	}
 
 	// Automigrate the URL struct.
-	db.AutoMigrate(&URL{})
+	db.AutoMigrate(&URL{},&User{})
 	DB = db
 }
