@@ -14,10 +14,14 @@ sur windows force a vous
 
 To run this project
 ```bash
-  Go run main.go
+  go run main.go
 ```
-
-
+et pour les test 
+```bash
+go test Login_test.go
+    et
+  go test url_test.go
+```
 ## Features
 
 - Login
